@@ -1,6 +1,37 @@
 # begin to build a simple program that models Instagram
 # you should have a User class, a Photo class and a comment class
+class User
+    
+end
 
+class Photo
+    aatr_reader :user, :comments
+
+    def initialize
+        @comments = []
+    end
+
+    def user=(user_obj)
+        @user = user_obj
+        user_obj.photos << self
+    end
+
+    def make_comment(text)
+        new_comment  Comment.new(text)
+        self.comments << new_comment
+        new_comment.photo = self
+        new_comment
+    end
+
+
+end
+
+class Comment
+    @@all = []
+    def initialize
+        @@all << self
+    end
+end
 
 sandwich_photo = Photo.new
 sophie = User.new("Sophie")
